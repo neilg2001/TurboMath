@@ -2,15 +2,15 @@
 <html lang="en">
 <title>TurboMath</title>
 <div>
-<div>
-<h2 class= "hey">TurboMath</h2>
+<h1 class= "hey">Game Over </h1>
+<h2 id="count"></h2>
 </div>
-<div class="yo">
-  <h2>Leaderboard</h2>
-  <h2>Settings</h2>
-  <a href="game.html">Play</a>
-</div>
-</div>
+
+<script>
+    var count = sessionStorage.getItem("count");
+    document.getElementById("count").innerHTML = `Time elapsed: ${count} seconds`;
+</script>
+
 </html>
 
 
