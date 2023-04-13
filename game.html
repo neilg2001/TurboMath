@@ -67,13 +67,12 @@ function generateProblem() {
     if (timeLeft == 60) {
         clearInterval(timerId);
         // alert("Time's up!");
-        count = 60;
         timeLeft = 0;
         answer = generateProblem();
         document.getElementById("answer").value = "";
         document.getElementById("question").innerHTML = answer;
         timerId = setInterval(countdown, 1000);
-        sessionStorage.setItem("count", count);
+        sessionStorage.setItem("timer", timeLeft);
         window.location.href = "ending.html";
     } 
     else {
@@ -83,7 +82,7 @@ function generateProblem() {
 
     if (count == 11){
       document.getElementById("question").innerHTML = "";
-      sessionStorage.setItem("count", count);
+      sessionStorage.setItem("timer", timeLeft);
       window.location.href = "ending.html";
       // alert("all done");
     }
