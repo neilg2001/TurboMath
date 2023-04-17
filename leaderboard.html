@@ -14,16 +14,25 @@
 <body>
     <img id="menu" src="turbo_img.png">
     <div class="top_part">
-        <h1 class="hey">Game Over </h1>
-        <h2 id="timer"></h2>
         <div class="container final">
-            <h1 class="title leaderboard">
-                <a href="leaderboard.html"> View Friend Leaderboard</a>
-            </h1>
-            <script>
-                var time = sessionStorage.getItem("timer");
-                document.getElementById("timer").innerHTML = `Time elapsed: ${time} seconds`;
-            </script>
+            <h1 class="title leaderboard">Friend Leaderboard</h1>
+            <div class="leader">
+                <p class="item"> 1) Claire - 15 seconds</p>
+            </div>
+            <div class="leader">
+                <p class="item"> 2) John - 16 seconds</p>
+            </div>
+            <div class="leader">
+                <p class="item"> 3) Neil - 16 seconds</p>
+            </div>
+            <div class="leader">
+                <p class="item"> 4) Yash - 18 seconds</p>
+            </div>
+            <div class="leader">
+                <p class="item"> 5) Samantha - 20 seconds</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

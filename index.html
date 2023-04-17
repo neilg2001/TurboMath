@@ -1,53 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>TurboMath</title>
-<div>
-<div>
-<h2 class= "hey">TurboMath</h2>
-</div>
-<div class="yo">
-  <h2>Leaderboard</h2>
-  <h2>Settings</h2>
-  <a href="game.html">Play</a>
-</div>
-</div>
+
+<head>
+    <title>TurboMath - Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+</head>
+
+<body>
+    <div class="header">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <div class="yo">
+        <p>Leaderboard</p>
+        <p>Settings</p>
+        <p><a href="game.html">Play</a></p>
+    </div>
+</body>
+
 </html>
 
 
 
 
 <style>
-    
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
     body {
-        font-family: 'Share Tech', sans-serif;
+        width: 100%;
+        height: 100%;
+        font-family: 'Rowdies', sans-serif;
         font-size: 68px;
         color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin: 0;
-        width: 100vw;
-        height: 100vh;
-        text-shadow: 8px 8px 10px #0000008c;
-        background-color: #343a40;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
     }
 
-    .hey{
-        padding-bottom: 300px;
+    .yo {
         text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: 100px;
+        transform: translate(-50%, -50%);
     }
 
-    .yo{
-        text-align: center;
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 150px;
+        margin-bottom: -200px;
+        display: flex;
     }
 
+    .header img {
+        position: absolute;
+        max-width: 75%;
+    }
 
     a {
         text-decoration: none;
-        color: white; 
+        color: white;
     }
-
 </style>
 
 
@@ -64,7 +96,7 @@
 
 
 
-    <!-- 
+<!-- 
 <div class="signup">
     <h2>Sign Up!</h2>
 </div>
