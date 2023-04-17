@@ -1,5 +1,203 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>TurboMath Login</title>
+  </head>
+  <script>
+		function startGame() {
+			// Hide the tutorial page and show the math problem page after 5 seconds
+			setTimeout(function() {
+				document.getElementById("tutorial").style.display = "none";
+				document.getElementById("game").style.display = "block";
+			}, 5000);
+		}
+	</script>
+
+  
+
+  <body onload= "startGame()">
+    <div id = "tutorial">
+      <div class = "timecorner">
+        <h1>TurboMath</h1>
+      </div>
+      <div class = "tut">
+        <h2>Solve the problems as fast as possible!</h2>
+        <p>Press enter to continue to the next problem if correct!</p>
+        <p>If incorrect, we will prompt you to answer again! </p>
+        <p>Good luck!</p>
+      </div>
+    </div>
+
+
+    <div id = "game">
+      <div class = "timecorner"><h1 id="timer"></h1></div>
+      <div id = "qa">
+        <label id="question" for = "answer"></label>
+        <!-- <div id="question"></div> -->
+        <input type="text" id="answer">
+      </div>
+      <!-- <button id = "btn" onclick="checkAnswer()">Submit</button> -->
+      <script src="script.js"></script>
+    </div>
+
+
+  </body>
+
+<script>
+
+var count = 1; 
+
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateProblem() {
+    const operators = ["+", "-"];
+    const operator = operators[Math.floor(Math.random() * operators.length)];
+    let num1 = Math.floor(Math.random() * 10) + 1
+    let num2 = Math.floor(Math.random() * 10) + 1
+
+    const problem = `${num1} ${operator} ${num2}`;
+    const answer = eval(problem);
+    document.getElementById("question").innerHTML = problem;
+    return answer;
+  }
+  
+  let answer = generateProblem();
+  let timeLeft = -4;
+  let timerId = setInterval(countdown, 1000);  
+
+  function countdown() {
+    if (timeLeft == 60) {
+        clearInterval(timerId);
+        // alert("Time's up!");
+        timeLeft = 0;
+        answer = generateProblem();
+        document.getElementById("answer").value = "";
+        document.getElementById("question").innerHTML = answer;
+        timerId = setInterval(countdown, 1000);
+        sessionStorage.setItem("timer", timeLeft);
+        window.location.href = "ending.html";
+    } 
+    else {
+        document.getElementById("timer").innerHTML = `Time: ${timeLeft}`;
+        timeLeft++;
+    }
+
+    if (count == 11){
+      document.getElementById("question").innerHTML = "";
+      sessionStorage.setItem("timer", timeLeft);
+      window.location.href = "ending.html";
+      // alert("all done");
+    }
+}
+
+let text = document.querySelector('input')
+text.addEventListener("keyup", e => {
+    e.preventDefault(); 
+    if(e.keyCode === 13){
+      checkAnswer();
+    }
+  });
+
+
+function checkAnswer() {
+    const userAnswer = document.getElementById("answer").value;
+
+    if (userAnswer == answer) {
+        document.getElementById("answer").value = "";
+        answer = generateProblem();
+        count = count + 1; 
+        // const operators = ["+", "-", "*", "/"];
+        // const operator = operators[Math.floor(Math.random() * operators.length)];
+        // let num1 = Math.floor(Math.random() * 10) + 1
+        // let num2 = Math.floor(Math.random() * 10) + 1
+        // const problem = `${num1} ${operator} ${num2}`;
+        // document.getElementById("answer").value = "";
+        // document.getElementById("question").innerHTML = problem;
+        // const answer = eval(problem);
+        // const userAnswer = document.getElementById("answer").value;
+    } else {
+      alert("Incorrect. Try again.");
+    }
+  }
+
+
+
+
+</script>
+
+
+<style>
+  #tutorial {
+    display: block;
+    text-align: center;
+  }
+  #game {
+    display: none;
+    font-family: 'Fantasy', 'copperplate';
+    font-size: 52px;
+  }
+  body {
+      font-family: 'Share Tech', sans-serif;
+      font-size: 40px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      text-shadow: 8px 8px 10px #0000008c;
+      background-color: #343a40;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
+  }
+
+  .tut{
+    font-family: 'Fantasy', 'copperplate';
+    font-size: 35px; 
+  }
+
+  .timecorner{
+    font-family: 'Fantasy', 'copperplate';
+    font-size: 30px;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    margin-left: 10px; 
+  }
+
+  input{
+    font-family: 'Fantasy', 'copperplate';
+
+
+  }
+
+
+  #qa {
+    align-items: center;
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #question{
+    padding-right: 50px;
+  }
+
+  #answer{
+    height: 40px;
+    width: 100px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    text-align: center;
+
+  }
+</style>
+</html>
+<!DOCTYPE html>
+<html>
 
 <head>
   <title>Play TurboMath!</title>
