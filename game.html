@@ -57,14 +57,29 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function generateProblem() {
-    const operators = ["+", "-"];
-    const operator = operators[Math.floor(Math.random() * operators.length)];
-    let num1 = Math.floor(Math.random() * 10) + 1
-    let num2 = Math.floor(Math.random() * 10) + 1
+  var diff = sessionStorage.getItem("difficulty");
 
-    const problem = `${num1} ${operator} ${num2}`;
-    const answer = eval(problem);
+  function generateProblem() {
+    var operators = [];
+    var range = 10
+    if(diff == "easy"){
+      operators = ["+", "-"];
+      range = 10;
+    }
+    if(diff == "medium"){
+      operators = ["+", "-", "*"];
+      range = 10;
+    }
+    if(diff == "hard"){
+      operators = ["+", "-", "*"];
+      range = 20;
+    }
+    var operator = operators[Math.floor(Math.random() * operators.length)];
+    let num1 = Math.floor(Math.random() * range) + 1
+    let num2 = Math.floor(Math.random() * range) + 1
+
+    var problem = `${num1} ${operator} ${num2}`;
+    var answer = eval(problem);
     document.getElementById("question").innerHTML = problem;
     return answer;
   }
@@ -94,7 +109,6 @@
       document.getElementById("question").innerHTML = "";
       sessionStorage.setItem("timer", timeLeft);
       window.location.href = "ending.html";
-      // alert("all done");
     }
   }
 
